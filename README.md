@@ -67,7 +67,7 @@ Each Schema requirement will be listed below.
 
 ## Deployment
 
-* [Heroku Deployment] (https://manko-app.herokuapp.com/)
+* [Heroku Deployment](https://manko-app.herokuapp.com/)
 
 ## Built With
 
