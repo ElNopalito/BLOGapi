@@ -32,13 +32,46 @@ Each Schema requirement will be listed below.
 * npm i mongoose
 * npm i morgan
 
+## Schemas
+###   User Schema
+        - username: string, required
+        - email: string, required
+        - birthday: date, required
+        - age: number
+        - password: string, required
+
+###   Blog Schema
+        - created_by: string, required
+        - created_at: date, required
+        - blog_title: string, required
+        - blog_content: string, required
+        - private: boolean, required
+
+## Endpoints
+
+### /Auth
+- router.post("/"): User authentication.
+### /Users
+- router.post("/"): Create a new user.
+### /Blogs
+- router.get("/"): Get all blogs
+- router.post("/"): Create blog
+- router.get("/:id"): Get blog by ID
+- router.put("/:id"): Get and update blog by ID
+- router.delete("/:id"): Get and delete blog by ID
+
+## ENV
+* MongoDB_URI
+* PORT 
+* SECRET_KEY
+
 ## Deployment
 
 * [Heroku Deployment] (https://manko-app.herokuapp.com/)
 
 ## Built With
 
-* Vscode
+* [Vscode](https://code.visualstudio.com/)
 * [Heroku](https://id.heroku.com/) 
 * [POSTMAN](https://www.postman.com/)
 
@@ -46,7 +79,7 @@ Each Schema requirement will be listed below.
 
 ## Acknowledgments
 
-* Abe Tavarez
-* PurpleBooth
-* Reddit
-* Stack Overflow
+* [Abe Tavarez](https://github.com/AbeTavarez)
+* [PurpleBooth](https://gist.github.com/PurpleBooth)
+* [Reddit](https://www.reddit.com/)
+* [Stack Overflow](https://stackoverflow.com)
