@@ -1,11 +1,12 @@
 const express = require('express');
-
+const authmiddleWare = require('../Middleware/authMiddleware')
 const router = express.Router();
 const {check, validationResult} = require('express-validator');
 
 const blogModel = require('../Models/blogSchema');
+const authMiddleware = require('../Middleware/authMiddleware');
 //!---------------------------------------------------Get Blog--------------------------------
-router.get('/', async (req, res) => {
+router.get('/', authMiddleware, async (req, res) => {
 
     try {
         const blog = await blogModel.find()
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
  });
 
 //!--------------------------------------------------POST Blog----------------------------------------
-router.post('/', async (req,res) => {
+router.post('/', authMiddleware, async (req,res) => {
     const blogData = req.body
 
     try {
@@ -29,7 +30,7 @@ router.post('/', async (req,res) => {
 });
 
 //!-------------------------------------------------Get Blog by ID--------------------------------------
-router.get('/:id', async (req,res) => { 
+router.get('/:id', authMiddleware, async (req,res) => { 
     const id = req.params.id
     try {
         const blog = await blogModel.findById(id)
@@ -41,7 +42,7 @@ router.get('/:id', async (req,res) => {
 });
 
 //!-------------------------------------------Update Blog by ID----------------------------------
-router.put('/:id', async (req,res) => {
+router.put('/:id',authMiddleware, async (req,res) => {
     const id = req.params.id
     const newBlogData = req.body
     try {
@@ -54,7 +55,7 @@ router.put('/:id', async (req,res) => {
 });
 
 //!------------------------------------------------Delete Blog----------------------------------------------
-router.delete('/:id', async (req,res) => {
+router.delete('/:id', authMiddleware, async (req,res) => {
     const id = req.params.id
 
     try {
@@ -65,4 +66,5 @@ router.delete('/:id', async (req,res) => {
         res.status(400).json({msg:'Unable to delete'})
     }
 });
+
 module.exports = router
